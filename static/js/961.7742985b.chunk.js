@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_the_movie_db=self.webpackChunkreact_the_movie_db||[]).push([[961],{961:function(e,t,n){n.r(t),n.d(t,{default:function(){return u}});var u=function(){}}}]);
+//# sourceMappingURL=961.7742985b.chunk.js.map
