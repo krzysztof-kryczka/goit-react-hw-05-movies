@@ -1,0 +1,10 @@
+.moviesList__link{
+  text-decoration: none;
+  color: #000;
+}
+
+.moviesList__link:hover,
+.moviesList__link:focus {
+    text-decoration: underline;
+    color: e51b36;
+  }

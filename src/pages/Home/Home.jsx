@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Loader } from '#components/Loader/Loader';
 import { fetchTrendingMovies } from '#services/themoviedb-api';
 import { STATUS } from '#consts/consts';
+import MovieList from '#components/MovieList/MovieList';
 import css from './Home.module.css';
 
 const Home = () => {
@@ -33,13 +34,12 @@ const Home = () => {
   switch (status) {
     case STATUS.PENDING:
       return loader && <Loader />;
-      
+
     case STATUS.RESOLVED:
-      console.log(movies);
       return movies?.length ? (
         <main>
           <h1 className={css.title}>Trending today</h1>
-          <p>{movies.length}</p>
+          <MovieList movies={movies} />
         </main>
       ) : (
         <p>There isn't any movie on this page.</p>
