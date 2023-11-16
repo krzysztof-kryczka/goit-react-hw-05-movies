@@ -20,3 +20,16 @@ export const fetchTrendingMovies = async () => {
     throw new Error(Notiflix.Notify.failure((ERROR_MESSAGE)));
   }
 };
+
+// Request full movie info for the movie page.
+export const fetchMovieDetailsById = async (id, extraInfo = '') => {
+  const extraInfoPath = extraInfo ? `/${extraInfo}` : '';
+  try {
+    const response = await axios(
+      `${API_ENDPOINTS.MOVIE_DETAILS}${id}${extraInfoPath}`
+    );
+    return response.data;
+  } catch {
+    throw new Error(Notiflix.Notify.failure(ERROR_MESSAGE));
+  }
+};

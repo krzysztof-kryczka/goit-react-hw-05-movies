@@ -1,0 +1,31 @@
+.moviesAdd__info {
+  text-align: center;
+}
+
+.moviesBtn__link {
+  padding: 10px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #e51b36;
+  border: 2px dotted #e51b36;
+}
+
+.moviesBtn__list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.moviesBtn__item {
+  padding: 20px 0;
+}
+
+.moviesBtn__link:hover,
+.moviesBtn__link:focus {
+  background-color: #e51b36;
+  color: #fff;
+}
