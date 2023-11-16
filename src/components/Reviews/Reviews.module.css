@@ -1,0 +1,11 @@
+.reviewsList {
+  list-style: none;
+}
+
+.reviewsAuthor {
+  font-weight: bold;
+}
+
+.reviews {
+  text-align: center;
+}
