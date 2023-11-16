@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Notiflix from "notiflix";
+import Notiflix from 'notiflix';
 
 import {
   API_KEY,
@@ -17,7 +17,7 @@ export const fetchTrendingMovies = async () => {
     const response = await axios(API_ENDPOINTS.TRENDING_MOVIES);
     return response.data.results;
   } catch {
-    throw new Error(Notiflix.Notify.failure((ERROR_MESSAGE)));
+    throw new Error(Notiflix.Notify.failure(ERROR_MESSAGE));
   }
 };
 
@@ -29,6 +29,17 @@ export const fetchMovieDetailsById = async (id, extraInfo = '') => {
       `${API_ENDPOINTS.MOVIE_DETAILS}${id}${extraInfoPath}`
     );
     return response.data;
+  } catch {
+    throw new Error(Notiflix.Notify.failure(ERROR_MESSAGE));
+  }
+};
+
+// keyword search for a movie on the movies page.
+export const fetchMovieByKeyword = async search => {
+  const queryParams = `?query=${search}`;
+  try {
+    const response = await axios(`${API_ENDPOINTS.SEARCH_MOVIE}${queryParams}`);
+    return response.data.results;
   } catch {
     throw new Error(Notiflix.Notify.failure(ERROR_MESSAGE));
   }

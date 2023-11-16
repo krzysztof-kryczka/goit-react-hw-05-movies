@@ -4,6 +4,7 @@ export const API_BASE_URL = 'https://api.themoviedb.org/3';
 export const API_ENDPOINTS = {
   TRENDING_MOVIES: '/trending/movie/day',
   MOVIE_DETAILS: '/movie/',
+  SEARCH_MOVIE: '/search/movie',
 };
 
 export const STATUS = {
