@@ -1,113 +1,71 @@
-# React homework template
+**Read in other languages: [english](README.md), [polish](README.pl.md).**
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+## Movie search app.
 
-## Создание репозитория по шаблону
+The app uses the themoviedb.org API to fetch popular movies, search for movies based on keywords, and get detailed information about specific movies.
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+- **Home**: Displays a list of popular videos.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+- **Movies**: Allows users to search for movies using keywords.
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+- **Movie Details**: Provides detailed information about a specific movie, including cast and reviews.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+## Preview
+![App look](./assets/project_movie_finder_themoviedb_01.png)
+![App look](./assets/project_movie_finder_themoviedb_02.png)
+![App look](./assets/project_movie_finder_themoviedb_03.png)
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+## API themoviedb.org 
+For the backend, use themoviedb.org API. You need to register (you can enter any data) and get API key. Enter the api key in the env.example file. Used endpoints:
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
-
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
-
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
-
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
-
-## Подготовка к работе
-
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
-
-## Деплой
-
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+```javascript
+API_ENDPOINTS = {
+  TRENDING_MOVIES: '/trending/movie/day', //a list of the most popular movies for today to create a collection on the home page page.
+  MOVIE_DETAILS: '/movie/', //Request full movie info for the movie page.
+  SEARCH_MOVIE: '/search/movie', // keyword search for a movie on the movies page.
+};
 ```
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+## Routes.
+A basic routing for a movie search and storage application.
+The app have the following routes:
 
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
+```javascript 
+The ``Home'' //component, the home page with a list of popular movies.
+The /'/movies' - //component Movies, a page of movie search by keyword. keyword.
+The /'movies/:movieId' //component MovieDetails, a page with detailed information about the movie.
+The /'movies/:movieId/cast' //component Cast, information about the cast. Rendered on the page MovieDetails.
+The /'movies/:movieId/reviews' //component Reviews, information about reviews. Rendered on the page MovieDetails.
 ```
 
-## Как это работает
+If a user has accessed a non-existent route is be redirected to the home page.
 
-![How it works](./assets/how-it-works.png)
+## Installation
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+To run the Movie Search application locally, follow these steps:
+
+1. Clone the repository:
+
+```bash
+   git clone [repository-url]
+```
+
+2. Change to the project directory:
+
+```bash
+   cd [repository-name]
+```
+
+3. Install and start dependencies:
+```bash
+   npm install
+   npm run dev
+   npm start
+```
+
+The application should now be accessible in your web browser at
+http://localhost:3000.
+
+## How it works
+
+The main component is **App**, defined in **App.jsx**.
