@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_the_movie_db=self.webpackChunkreact_the_movie_db||[]).push([[936],{936:function(e,n,t){t.r(n),t.d(n,{default:function(){return i}});var r="Home_title__L087v",c=t(184),i=function(){return(0,c.jsx)("main",{children:(0,c.jsx)("h1",{className:r,children:"Trending today"})})}}}]);
-//# sourceMappingURL=936.f54bd5a2.chunk.js.map
