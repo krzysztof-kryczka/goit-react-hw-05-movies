@@ -23,12 +23,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}"
+    "lint:js": "eslint src/**/*.{js,jsx}",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -43,10 +46,25 @@
       "last 1 safari version"
     ]
   },
-    "imports": {
-    "#components/*":"./src/components/*",
-    "#consts/*":"./src/consts/*",
-    "#pages/*":"./src/pages/*",
-    "#services/*":"./src/services/*"
-}
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#consts/*": "./src/consts/*",
+    "#pages/*": "./src/pages/*",
+    "#services/*": "./src/services/*"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-interactions": "^7.5.3",
+    "@storybook/addon-links": "^7.5.3",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.5.3",
+    "@storybook/preset-create-react-app": "^7.5.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3",
+    "@storybook/testing-library": "^0.2.2",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-plugin-storybook": "^0.6.15",
+    "storybook": "^7.5.3",
+    "webpack": "^5.89.0"
+  }
 }
